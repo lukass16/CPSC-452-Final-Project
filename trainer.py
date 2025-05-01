@@ -43,7 +43,7 @@ def train_one_epoch(model, data_loader, optimizer, device, kl_weight, points_use
         predicted_sdfs = outputs['sdf']   # (B, N_query)
         kl_loss = outputs['kl']            # (B, )
 
-        sdf_loss = F.mse_loss(predicted_sdfs, query_sdf)
+        sdf_loss = F.l1_loss(predicted_sdfs, query_sdf)
         kl_loss = torch.mean(kl_loss)
 
         loss = sdf_loss + kl_weight * kl_loss
@@ -86,7 +86,7 @@ def evaluate(model, data_loader, device, points_used = 2048, num_query_points=51
         outputs = model(sample_pos, query_pos)
 
         predicted_sdfs = outputs['sdf']
-        loss = F.mse_loss(predicted_sdfs, query_sdf)
+        loss = F.l1_loss(predicted_sdfs, query_sdf)
 
         total_loss += loss.item()
         num_batches += 1
