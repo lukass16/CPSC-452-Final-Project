@@ -3,10 +3,10 @@ import torch.nn.functional as F
 from tqdm import tqdm
 
 
-def train(model, train_loader, val_loader, optimizer, device, num_epochs, kl_weight=1e-3, points_used=2048, num_query_points=512):
+def train(model, train_loader, val_loader, optimizer, device, num_epochs, kl_weight=1e-7, points_used=2048, num_query_points=512): #! changed kl weight to overfit
     for epoch in range(num_epochs):
         train_one_epoch(model, train_loader, optimizer, device, kl_weight, points_used, num_query_points)
-        val_loss = evaluate(model, val_loader, device)
+        val_loss = evaluate(model, val_loader, device, points_used=points_used, num_query_points=num_query_points)
         print(f"Epoch {epoch+1}/{num_epochs} - Validation Loss: {val_loss:.6f}")
 
 
