@@ -35,7 +35,7 @@ def train_one_epoch(model, data_loader, optimizer, device, kl_weight, points_use
         query_pos = query_points[:, :, :3].to(device) # [B, points_used, 3]
         query_sdf = query_points[:, :, 3].to(device)   # shape [B, query_points]
         """ """
-        # Note: effectively every batch we use a different subset of points from each shape in the batch
+        # Note: effectively every batch we use a different subset of points from each shape in the batch (unless points_used = 10000)
 
         """ Perform step """
         optimizer.zero_grad()
