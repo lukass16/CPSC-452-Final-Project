@@ -14,4 +14,4 @@ module load CUDA
 module load cuDNN
 module load miniconda
 conda activate basenv
-papermill pointnet.ipynb output.ipynb
+papermill pointnet_sdfvae.ipynb output_vae.ipynb
