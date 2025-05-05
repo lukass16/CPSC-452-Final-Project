@@ -4,9 +4,9 @@
 #SBATCH --output=trainjobout.ipynb
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --gpus=2
+#SBATCH --gpus=1
 #SBATCH --partition=gpu
-#SBATCH --time=4:00:00
+#SBATCH --time=1:30:00
 
 
 
