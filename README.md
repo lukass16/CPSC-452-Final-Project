@@ -4,4 +4,4 @@ To install all dependencies please activate the conda environment in `environmen
 
 The training loop is implemented in `pointnet_sdfvae_simple.ipynb`. We already used this notebook to train a model on a larger dataset, and saved its weights in `working_model.pth`.
 
-To generate new cars and visualize the latent space, see `latent-visualizations`
+To generate new cars and visualize the latent space, see `latent-visualizations/`
