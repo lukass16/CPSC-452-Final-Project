@@ -43,6 +43,34 @@ def visualize_sdf_3d(sample):
     plt.tight_layout()
     plt.show()
 
+def visualize_sdf_surface_3d(sample, tolerance = 0.01):
+    # Convert to NumPy
+    coords = sample[:, :3].numpy()  # (x, y, z)
+    sdf = sample[:, 3].numpy()      # scalar values for color
+
+    mask = np.abs(sdf) <= tolerance
+    coords_surface = coords[mask]
+    sdf_surface = sdf[mask]
+
+    # Create 3D plot
+    fig = plt.figure(figsize=(8, 6))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Scatter plot colored by sdf values
+    p = ax.scatter(coords_surface[:, 0], coords_surface[:, 1], coords_surface[:, 2], c=sdf_surface, cmap='coolwarm', s=1)
+
+    # Add colorbar
+    fig.colorbar(p, ax=ax, label='Signed Distance')
+
+    # Axes settings
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('3D SDF Visualization')
+
+    plt.tight_layout()
+    plt.show()
+
 def visualize_sdf_2d(sample, x_target = 0.0, tolerance = 0.01):
     data = sample.numpy()
 
