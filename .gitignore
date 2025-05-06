@@ -5,4 +5,4 @@
 /shapenet_planes
 /VecSetTransformer/klautoencoder.pth
 /cars995
-/__pycache__
+/__pycache__/*
